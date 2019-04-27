@@ -2,7 +2,6 @@
 <div>
 	 <section class="order">
         <Header title="订单列表"/>
-        </header>
         <section class="order_no_login">
           <img src="./images/person.png">
           <h3>登录后查看外卖订单</h3>

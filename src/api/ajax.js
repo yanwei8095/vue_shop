@@ -4,7 +4,7 @@
 函数的返回值是promise
 使用promise封装ajax的作用
 1.统一处理请求异常
-2.异步返回的不是reponse,而直接是response.data
+2.异步返回的不是response,而直接是response.data
 */
 import axios from 'axios'
 export default function ajax(url,data={},method="GET"){
@@ -19,9 +19,9 @@ export default function ajax(url,data={},method="GET"){
       promise = axios.post(url, data)
     }
     promise.then(
-      promise=>{
+      response=> {
         //如果成功了,调用resolve()
-        resolve(reponse.data)
+        resolve(response.data)
       },
       error=>{
         //如果失败了,不调用reject(),而是提示错误信息

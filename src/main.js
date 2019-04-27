@@ -1,7 +1,8 @@
 import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
-import Header from './components/header/header.vue'
+import Header from './components/Header/Header.vue'
+import store from './store'
 
 //全局注册
 Vue.component("Header",Header)
@@ -14,5 +15,6 @@ new Vue({
   /*render: function (createElement) {
     return createElement(App)  // 返回<App/>
   }*/
-  router,
+  router,//配置路由器
+  store,//配置vuex的store
 })

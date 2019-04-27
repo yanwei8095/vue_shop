@@ -22,3 +22,6 @@ export const reqXxx = () => ajax('/xxx')
 
 // 需要通过代理转发请求baidu的接口
 export const reqBaidu = () => ajax('/baidu/yyy')
+
+// 根据会话获取用户信息
+export const reqUser = () => ajax(BASE + '/userinfo')
