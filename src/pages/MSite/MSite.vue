@@ -41,15 +41,21 @@
 import {mapState} from 'vuex'
 import Swiper from 'swiper'
 import 'swiper/dist/css/swiper.css'
-import ShopList from '../../components/ShopList/ShopList'
+import ShopList from '../../components/ShopList/ShopList.vue'
 	export default {
     mounted(){
   // 获取商家列表和分类列表
       this.$store.dispatch('getShops')
       this.$store.dispatch('getCategorys')
     },
+    
   computed:{
-    ...mapState(['address','categorys']),
+    // ...mapState(['address','categorys']),
+    ...mapState({
+      address:state=>state.msite.address,//state是总状态
+      categorys: state => state.msite.categorys
+    }),
+      
     
     categorysList(){
       const bigArr=[]
@@ -91,6 +97,7 @@ import ShopList from '../../components/ShopList/ShopList'
     })
     }
   },
+  
   components:{
     ShopList
   }

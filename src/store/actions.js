@@ -3,12 +3,16 @@ import {
   reqAddress,
   reqCategorys,
   reqShops,
-  reqUser
+  reqUser,
+  reqLogout
 }from '../api'
 
 import{
-  RECEIVE_ADDRESS,RECEIVE_CATEGORYS,
-  RECEIVE_SHOPS,RECEIVE_USER
+  RECEIVE_ADDRESS,
+  RECEIVE_CATEGORYS,
+  RECEIVE_SHOPS,
+  RECEIVE_USER,
+  RESET_USER
 }from './mutation-types'
 
 export default{
@@ -43,8 +47,17 @@ export default{
     )
     //根据结果,提交mutation
     if(result.code===0){
+      // debugger
       const shops=result.data
       commit(RECEIVE_SHOPS,shops)
+    }
+  },
+  /* 获取当前用户的异步action */
+  async getUser({commit}){
+    const result = await reqUser()
+    if(result.code===0){
+      const user=result.data
+      commit(RECEIVE_USER,user)
     }
   },
 
@@ -57,5 +70,14 @@ export default{
       const user = result.data
       commit(RECEIVE_USER, user)
     }
-  }
+  },
+  /*
+  退出登陆的异步action
+   */
+  async logout ({commit}) {
+    const result = await reqLogout()
+    if(result.code===0) {
+      commit(RESET_USER)
+    }
+  },
 }
